@@ -24,13 +24,20 @@ namespace Lab10_Car_Models_Objects_OOP
                 string title = $"    {"Make",-12}{"Model",-10}{"Year",5}{ "Price",8}{"Miles",12}";
 
                 int numberOfCars = Dealership.CarsInTheLot(availableCars, title);
+                Console.WriteLine($"{numberOfCars + 1}. Quit");
 
                 Console.WriteLine("\nWhich Car would you like to checkout?");
 
-                int selection = Validator.GetValidSelection($"Select item number from(1 - { numberOfCars}): ", numberOfCars);
-
+                int selection = Validator.GetValidSelection($"Select item number from(1 - { numberOfCars + 1}): ", numberOfCars);
+                if (selection == numberOfCars + 1)
+                {
+                    Console.Write("Are you sure you want to quit? (Y/N): ");
+                    shopping = !Validator.GetYesorNo();
+                    continue;
+                }
                 Console.WriteLine($"{"Make",-12}{"Model",-10}{"Year",5}{ "Price",8}{"Miles",12}");
                 Console.WriteLine(availableCars[selection - 1]);
+                
                 Console.Write("Would you like to buy this car? (Y/N): ");
                 bool buy = Validator.GetYesorNo();
                 if (buy)

@@ -14,7 +14,7 @@ namespace Lab10_Car_Models_Objects_OOP
                 string input = Console.ReadLine();
                 success = int.TryParse(input, out selection);
 
-                if (selection > menuItemNumber || selection < 1)
+                if (selection > menuItemNumber + 1 || selection < 1)
                 {
                     Console.Write($"Not a valid input... ");
                     success = false;
